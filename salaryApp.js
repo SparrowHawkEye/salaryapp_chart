@@ -129,38 +129,71 @@ const loadFirebaseData = function (resHandler) {
 };
 
 const displayLastItemDialog = function (lastItem) {
+  const lastItemDiv = document.createElement('div');
   const dlg = document.getElementById("dialog-last-item");
-  dlg.classList.remove("hide");
-  document.getElementById("showName").innerText = lastItem.name;
-  document.getElementById("showSalary").innerText = d3.format(",.0f")(
-    lastItem.salary
-  );
-
+  lastItemDiv.classList.add("modal-body");
+  dlg.innerHTML=``;
+  lastItemDiv.innerHTML =`
+  <div class="modal-header">
+        <h5 class="modal-title mx-auto" id="exampleModalLabel">Last Item in the Chart</h5>
+      </div>
+  <p class="text-center"> <b>Name</b>: ${lastItem.name}</p>
+  <p class="text-center"> <b>Salary</b>: ${d3.format(",.1f")(lastItem.salary)}</p>
+  <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+  `
+  dlg.appendChild(lastItemDiv);
+  
 }; 
 
 var showDataError = function (name, salary) {
-  const dlg = document.getElementById("dialog-error");
-  dlg.classList.remove("hide");
-
-  toggleErrorMessage("newName", name, "Who the hell you are talking about!");
-  toggleErrorMessage("newSalary", salary, "How much that guy make!");
-};
-
-function toggleErrorMessage(selector, value, msg) {
-  if (value) {
-    document.getElementById(selector).style.display = "none";
-  } else {
-    document.getElementById(selector).style.display = "block";
-    document.getElementById(selector).innerText = msg;
+  // const dlg = document.getElementById("dialog-error");
+  // dlg.classList.remove("hide");
+  swal("Your Boss is watching!")
+  .then((name,salary) => {
+    swal({ 
+      button: {
+        text: "Try Again"
+      },
+      title:`Who the hell you are talking about!`,
+      text: `"How much that guy make!`,
+      icon: "warning",
+  
+    })
+  })
   }
-}
+
+  // toggleErrorMessage("newName", name, "Who the hell you are talking about!");
+  // toggleErrorMessage("newSalary", salary, "How much that guy make!");
+// };
+
+// function toggleErrorMessage(selector, value, msg) {
+//   if (value) {
+//     document.getElementById(selector).style.display = "none";
+//   } else {
+//     document.getElementById(selector).style.display = "block";
+    
+//     document.getElementById(selector).innerText = msg;
+//   }
+// }
 
 const showRecordCount = function (data) {
+  const lastItemDiv = document.createElement('div');
   const dlg = document.getElementById("dialog-record-count");
-
-  dlg.classList.remove("hide");
-
-  document.getElementById("numberOfRecords").innerText = data.length;
+  lastItemDiv.classList.add("modal-body");
+  const totalCount = data.length;
+  dlg.innerHTML=``;
+  lastItemDiv.innerHTML =`
+  <div class="modal-header">
+        <h5 class="modal-title mx-auto" id="exampleModalLabel">Total Record Count</h5>
+      </div>
+      <p><b>Record count</b>:${totalCount}</p>
+  <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+  `
+  dlg.appendChild(lastItemDiv);
 };
 
 const anotherRecordCountHandler = function anotherRecordCountHandler(e) {
@@ -210,4 +243,3 @@ const uniquifyNames = function (items) {
     return item;
   });
 };
-

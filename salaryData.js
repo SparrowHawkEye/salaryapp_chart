@@ -36,7 +36,32 @@ let salary_data = {
     name: "JS Dude",
     salary: "44432",
   },
-  "-JvacZOcfUEvub7mxeo-": {
+  8: {
+    name: "Jhankar Mahbub",
+    organization: "Nielsen",
+    salary: "53454",
+  },
+  9: {
+    name: "Jhankar Mahbub",
+    salary: "43454",
+  },
+  10: {
+    name: "Jhankar Mahbub",
+    salary: "33454",
+  },
+  11: {
+    name: "Jhankar Mahbub",
+    salary: "23444",
+  },
+  12: {
+    name: "Jhankar Mahbub",
+    salary: "63444",
+  },
+  13: {
+    name: "Jhankar Mahbub",
+    salary: "53655",
+  },
+  /* "-JvacZOcfUEvub7mxeo-": {
     name: "Jhankar Mahbub",
     organization: "Nielsen",
     salary: "53454",
@@ -60,5 +85,5 @@ let salary_data = {
   "-JviO3gXUpSdnZHtliWg": {
     name: "Jhankar Mahbub",
     salary: "53655",
-  },
+  }, */
 };
